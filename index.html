@@ -1,10 +1,18 @@
 ---
 layout: default
-title: site.name
+title: Arduino 101
 ---
-<div class="blurb">
-    <h1>Arduino</h1>
 
+<div class="blurb">
+
+    <img src="images/logo.png">
+
+    <p>
+        En este sitio encontrarás varias prácticas muy sencillas que te darán una idea de que es y como utilizar un
+        Arduino, así como diferentes herramientas que te pueden ayudar o dar una idea para algún proyecto.
+    </p>
+
+    <h2>Prácticas</h2>
     <ul class="posts">
         {% for post in site.posts %}
         <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
