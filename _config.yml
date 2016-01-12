@@ -1,3 +1,4 @@
 name: Arduino 101
 markdown: kramdown
-permalink: /blog/:year/:month/:day/:title
+url: http://mgradob.github.io/
+permalink: /:year/:month/:day/:title
