@@ -14,7 +14,7 @@ parpadear un LED en la tablilla de color amarillo (ámbar) cada segundo. Al fina
 * Como cargar un programa de nuestra computadora al Arduino.
 
 Y llegaremos a esto:
-![Alt text]({{ site.url }}/images/practica1.gif)
+<iframe frameborder='0' height='448' marginheight='0' marginwidth='0' scrolling='no' src='https://123d.circuits.io/circuits/1411515-hello-world/embed#breadboard' width='650'></iframe>
 
 ## Materiales
 * 1 Arduino UNO R3
