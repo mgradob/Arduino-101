@@ -28,14 +28,12 @@ y llegaremos a esto:
 Abre un nuevo proyecto de Arduino (menú Archivo/Nuevo). Lo primero que tenemos que hacer es configurar el módulo de 
 comunicación del Arduino. Para hacerlo usaremos las instrucciones [Serial](https://www.arduino.cc/en/Reference/Serial):
 
-    ```arduino
     void setup() {
         // put your setup code here, to run once:
         ...
     
         Serial.begin(9600);
     }
-    ```
 
 [Serial.begin(9600)](https://www.arduino.cc/en/Serial/Begin) es una instrucción que configura el módulo Serial (comunicación) del Arduino para poder platicar con la PC. Esta instrucción **siempre** debe de ir en la función *setup()* y **siempre** debe ser la primera instrucción de *Serial* en utilizarse.
 El número *9600* significa la velocidad a la cual se va a transmitir los datos. En este caso se van a transmitir *9600* bits por segundo (Baud Rate). Este número **no** es elegido al azar, es una de las velocidades más utilizadas comercialmente, aunque existen otras velocidades como 115,200 (máx velocidad del Arduino). Es **muy importante** saber la velocidad a la que se están comunicando los dispositivos puesto que si tienen configuradas velocidades diferentes los datos enviados pueden ser corrompidos o perdidos.
@@ -44,35 +42,30 @@ Para enviar texto a la computadora tenemos las siguientes instrucciones:
 * [Serial.print()](https://www.arduino.cc/en/Serial/Print):
 Esta instrucción manda el texto que pongamos entre los paréntesis sin hacer un salto de línea, por ejemplo:
 
-	```arduino
 	void loop() {
 		Serial.print("Kiubo compa");
 		Serial.print(", no lo haga compa");
 	}
-	```
+	
 en la computadora veríamos: 
-	```text
+
 	Kiubo compa, no lo haga compa
-	```
 
 * [Serial.println()](https://www.arduino.cc/en/Serial/Println):
 Esta instrucción manda el texto que pongamos entre los paréntesis haciendo un salto de línea, por ejemplo:
 
-	```arduino
 	void loop() {
 		Serial.println("Kiubo compa");
 		Serial.println(", no lo haga compa");
 	}
-	```
+	
 en la computadora veríamos: 
-	```text
+
 	Kiubo compa
 	, no lo haga compa
-	```
 
 Podemos hacer combinaciones entre estos dos comandos, por ejemplo:
 
-    ```arduino
     void loop() {
         Serial.print("Kiubo compa");
         Serial.println(", no lo haga compa");
@@ -80,32 +73,25 @@ Podemos hacer combinaciones entre estos dos comandos, por ejemplo:
         Serial.print("tampoco 1000itar.");
         Serial.print(" Pero soy 3,1416loto xD");
     }
-    ```
 
 y en la computadora veríamos:
 
-    ```text
     Kiubo compa, no lo haga compa
     no soy 100tifico, tampoco 1000itar. Pero soy 3,1416loto xD
-    ```
 
 O podemos enviar datos:
 
-    ```arduino
     void loop() {
         Serial.print("Cien: ");
         Serial.println(100);
         Serial.print("HIGH: ");
         Serial.println(HIGH);
     }
-    ```
 	
 y en la computadora veríamos:
 
-    ```text
     Cien: 100
     HIGH: 1
-    ```
 
 Por último tenemos que abrir *Serial Monitor* del menú *Tools* y verificar que la **velocidad configurada es la misma que la que configuramos en el Arduino (ej: 9600).**
 
@@ -121,7 +107,6 @@ Enviar datos es algo muy sencillo en Arduino. Por el contrario, recibir datos no
 
 Para lograr esto, lo más lógico es primero revisar si hay algún dato disponible, antes de hacer nada. Por ejemplo:
 
-    ```arduino
     void loop() {
         ...
     
@@ -131,7 +116,6 @@ Para lograr esto, lo más lógico es primero revisar si hay algún dato disponib
     
         ...
     }
-    ```
 
 Aquí haremos uso, por primera vez, de las estructuras de control, en este caso el [**if**](https://www.arduino.cc/en/Reference/If). Básicamente, el **if** evalua una condición y si esta es verdadera entonces ejecuta el código que se encuentra dentro de los corchetes que le siguen, si no entonces se saltea esa parte. En este caso, **si** nuestro módulo Serial nos dice que tiene  más de 0 datos para leer disponibles entonces le mandamos a la computadora el texto "Dato recibido", **si no** recibimos ningún dato entonces no enviamos nada.
 
@@ -141,7 +125,6 @@ Aquí haremos uso, por primera vez, de las estructuras de control, en este caso 
 
 Ahora, es útil saber que hemos recibido un dato, pero es más útil saber *que* dato recibimos. Para esto haremos lo siguiente:
 
-    ```arduino
     void loop() {
         ...
     
@@ -153,7 +136,6 @@ Ahora, es útil saber que hemos recibido un dato, pero es más útil saber *que*
     
         ...
     }
-    ```
 
 Primero revisemos que haya algún dato que leer. Si lo hay entonces leemos ese dato y lo guardamos en la variable _dato_. Una vez guardado, podemos hacer lo que sea con ese dato, por lo que decidimos enviarlo de vuelta. Esto es lo que conocemos como *Loopback*.
 
@@ -163,7 +145,6 @@ Ya que sabemos como recibir datos de una PC en el Arduino podemos hacer cosas mu
 
 Para probar el circuito probemos el siguiente programa:
 
-    ```arduino
     // pin references:
     int rojo = 11;
     int azul = 10;
@@ -191,7 +172,6 @@ Para probar el circuito probemos el siguiente programa:
         digitalWrite(verde, LOW);
         delay(500);
     }
-    ```
 
 Para continuar, nuestro programa debe hacer lo siguiente:
 
@@ -201,7 +181,6 @@ Para continuar, nuestro programa debe hacer lo siguiente:
 
 Una forma que podemos utilizar para esto es revisar que dato fué el que recibimos y *si* recibimos la letra *'R'* entonces procedemos a encender el LED, *si* recibimos la letra *'r'* apaguemos el LED, y si es cualquier otra no hagamos nada. Por ejemplo:
 
-    ```arduino
     void loop() {
         ...
     
@@ -223,7 +202,6 @@ Una forma que podemos utilizar para esto es revisar que dato fué el que recibim
     
         ...
     }
-    ```
 
 Ahora tenemos un programa mucho más funcional, interesante y complejo! Podemos ver que las condiciones (IF's) nos proveen de mucha más felxibilidad y poder para controlar nuestro Arduino. Aunque el **if** no es la unica estructura que existe, te presento el [Switch](https://www.arduino.cc/en/Reference/SwitchCase).
 
