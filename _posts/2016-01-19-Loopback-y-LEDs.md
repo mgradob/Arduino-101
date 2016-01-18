@@ -39,13 +39,14 @@ comunicación del Arduino. Para hacerlo usaremos las instrucciones [Serial](http
 El número *9600* significa la velocidad a la cual se va a transmitir los datos. En este caso se van a transmitir *9600* bits por segundo (Baud Rate). Este número **no** es elegido al azar, es una de las velocidades más utilizadas comercialmente, aunque existen otras velocidades como 115,200 (máx velocidad del Arduino). Es **muy importante** saber la velocidad a la que se están comunicando los dispositivos puesto que si tienen configuradas velocidades diferentes los datos enviados pueden ser corrompidos o perdidos.
 
 Para enviar texto a la computadora tenemos las siguientes instrucciones:
+
 * [Serial.print()](https://www.arduino.cc/en/Serial/Print):
 Esta instrucción manda el texto que pongamos entre los paréntesis sin hacer un salto de línea, por ejemplo:
 
-	void loop() {
-		Serial.print("Kiubo compa");
-		Serial.print(", no lo haga compa");
-	}
+        void loop() {
+            Serial.print("Kiubo compa");
+            Serial.print(", no lo haga compa");
+        }
 	
 en la computadora veríamos: 
 
@@ -54,10 +55,10 @@ en la computadora veríamos:
 * [Serial.println()](https://www.arduino.cc/en/Serial/Println):
 Esta instrucción manda el texto que pongamos entre los paréntesis haciendo un salto de línea, por ejemplo:
 
-	void loop() {
-		Serial.println("Kiubo compa");
-		Serial.println(", no lo haga compa");
-	}
+        void loop() {
+             Serial.println("Kiubo compa");
+             Serial.println(", no lo haga compa");
+         }
 	
 en la computadora veríamos: 
 
