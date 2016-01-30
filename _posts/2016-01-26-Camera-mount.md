@@ -57,12 +57,12 @@ El código que desarrollamos es el siguiente:
                 }
             }
             else if(dato == 'a'){
-                if(gradv > 0){
+                if(gradh > 0){
     	            gradh = gradh - 10;
                 }
             }
             else if(dato == 'd'){
-                if(gradv < 180){
+                if(gradh < 180){
                 	gradh = gradh + 10;
                 }
             }
