@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Loopback y LEDs
+title: 3 - Loopback y LEDs
 date: 2016-01-19
 ---
 
@@ -204,7 +204,7 @@ Una forma que podemos utilizar para esto es revisar que dato fué el que recibim
         ...
     }
 
-Ahora tenemos un programa mucho más funcional, interesante y complejo! Podemos ver que las condiciones (IF's) nos proveen de mucha más felxibilidad y poder para controlar nuestro Arduino. Aunque el **if** no es la unica estructura que existe, te presento el [Switch](https://www.arduino.cc/en/Reference/SwitchCase).
+Ahora tenemos un programa mucho más funcional, interesante y complejo! Podemos ver que las condiciones (IF's) nos proveen de mucha más flexibilidad y poder para controlar nuestro Arduino. Aunque el **if** no es la unica estructura que existe, te presento el [Switch](https://www.arduino.cc/en/Reference/SwitchCase).
 
 ## Ejercicio
 Ahora que sabes como controlar los colores del LED desde un Arduino el siguiente paso es:
