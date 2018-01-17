@@ -14,9 +14,6 @@ la práctica conoceremos:
 * Enviar un String (texto) del Arduino a la PC.
 * Enviar Caracteres de la PC al Arduino.
 
-y llegaremos a esto:
-<iframe frameborder='0' height='448' marginheight='0' marginwidth='0' scrolling='no' src='https://123d.circuits.io/circuits/1463292-loopback-and-leds/embed#breadboard' width='650'></iframe>
-
 ## Materiales
 * 1 Arduino UNO R3
 * 1 Cable USB A - USB B (Impresora)
