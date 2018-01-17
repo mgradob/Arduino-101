@@ -1,6 +1,6 @@
 ---
 layout: post
-id: 2
+session: 2
 title: Hola Mundo
 date: 2016-01-11
 ---
