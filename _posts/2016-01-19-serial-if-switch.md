@@ -1,7 +1,7 @@
 ---
 layout: post
 session: 3
-title: Loopback y LEDs
+title: Serial, If y Switch
 date: 2016-01-19
 ---
 
@@ -20,10 +20,6 @@ y llegaremos a esto:
 ## Materiales
 * 1 Arduino UNO R3
 * 1 Cable USB A - USB B (Impresora)
-* 1 Protoboard
-* 3 Resistencias de 150 ohms.
-* 1 LED RGB.
-* Cable
 
 ## Enviar datos del Arduino a PC
 Abre un nuevo proyecto de Arduino (menú Archivo/Nuevo). Lo primero que tenemos que hacer es configurar el módulo de 
@@ -102,12 +98,9 @@ De esta manera nosotros podemos ver lo que está haciendo el Arduino, en que par
 > **Precaución:** Una vez que se configure el módulo Serial los pines 0 y 1 del Arduino no podrán ser utilizados para otra cosa. No hay que conectar nada aquí o se va a descomponer la comunicación.
 
 ## Enviar datos de la PC al Arduino
-Enviar datos es algo muy sencillo en Arduino. Por el contrario, recibir datos no lo es tanto. Aquí tenemos que tener un poco más de control sobre la comunicación. A simple vista, tenemos que:
-
-1. Revisar si hay algun dato disponible.
-2. Leer el dato.
-
-Para lograr esto, lo más lógico es primero revisar si hay algún dato disponible, antes de hacer nada. Por ejemplo:
+Enviar datos es algo muy sencillo en Arduino. Por el contrario, recibir datos no lo es tanto. 
+Aquí tenemos que tener un poco más de control sobre la comunicación.
+Para lograr esto lo más lógico es primero revisar si hay algún dato disponible. Por ejemplo:
 
     void loop() {
         ...
@@ -139,78 +132,68 @@ Ahora, es útil saber que hemos recibido un dato, pero es más útil saber *que*
         ...
     }
 
-Primero revisemos que haya algún dato que leer. Si lo hay entonces leemos ese dato y lo guardamos en la variable _dato_. Una vez guardado, podemos hacer lo que sea con ese dato, por lo que decidimos enviarlo de vuelta. Esto es lo que conocemos como *Loopback*.
+Primero revisemos que haya algún dato que leer. 
+Si lo hay entonces leemos ese dato y lo guardamos en la variable _dato_. 
+Una vez guardado, podemos hacer lo que sea con ese dato, por lo que decidimos enviarlo de vuelta. 
+Esto es lo que conocemos como *Loopback*.
 
-Ya que sabemos como recibir datos de una PC en el Arduino podemos hacer cosas mucho más complejas, como encender un LED dependiendo del dato recibido. Para hacerlo más interesante utilizaremos LEDs RGB (Red-Green-Blue), que son capaces de encender en cualquier color del espectro visible. Para esto hay que conectar el circuito como sigue:
-
-<iframe frameborder='0' height='448' marginheight='0' marginwidth='0' scrolling='no' src='https://123d.circuits.io/circuits/1463292-loopback-and-leds/embed#breadboard' width='650'></iframe>
-
-Para probar el circuito probemos el siguiente programa:
-
-    // pin references:
-    int rojo = 11;
-    int azul = 10;
-    int verde = 9;
-    
-    void setup() {
-        // put your setup code here, to run once:
-        pinMode(rojo, OUTPUT);
-        pinMode(azul, OUTPUT);
-        pinMode(verde, OUTPUT);
-    }
-    
-    void loop() {
-        // put your main code here, to run repeatedly:
-        digitalWrite(rojo, HIGH);
-        delay(500);
-        digitalWrite(rojo, LOW);
-        delay(500);
-        digitalWrite(azul, HIGH);
-        delay(500);
-        digitalWrite(azul, LOW);
-        delay(500);
-        digitalWrite(verde, HIGH);
-        delay(500);
-        digitalWrite(verde, LOW);
-        delay(500);
-    }
-
-Para continuar, nuestro programa debe hacer lo siguiente:
-
-1. Si la PC envía la letra 'R' el LED rojo debe encenderse.
-2. Si la PC envía la letra 'r' el LED rojo debe apagarse.
-2. Si la PC envía cualquier otra letra el LED no debe cambiar su estado.
-
-Una forma que podemos utilizar para esto es revisar que dato fué el que recibimos y *si* recibimos la letra *'R'* entonces procedemos a encender el LED, *si* recibimos la letra *'r'* apaguemos el LED, y si es cualquier otra no hagamos nada. Por ejemplo:
+## Mejorando nuestro programa
+El if nos da mucha flexibilidad, no solo podemos validar una expresión, podemos agregar diferentes expresiones e inclusive agregar una expresión común.
 
     void loop() {
         ...
-    
+        
         if(Serial.available() > 0) {
-            // Guardamos el dato recibido...
-            char dato = Serial.read();
+            char dato = Serial.read(); 
             Serial.print("Dato recibido: ");
             Serial.println(dato);
-    
-            // Verificamos el dato guardado...
-            if(dato == 'R') {						// si el dato es 'R'...
-                digitalWrite(rojo, HIGH);
-            } else if(dato == 'r') {				// si el dato no es 'R' pero si es 'r'...
-                digitalWrite(rojo, LOW);
-            } else {								// Si no fue ninguno de los dos...
-                Serial.println("Dato incorrecto");
+           
+            if(dato == 'A') {           // Podemos anidar IF (IF dentro de IF)
+                Serial.println(1);
+            } else if(dato == 'B') {    // Podemos validar diferentes opciones
+                Serial.println(2);
+            } else {                    // Si no se cumple ninguna de las condiciones de arriba ejecutamos este código
+                Serial.println(-1);
             }
         }
+        
+        ...
+    }
     
+## Mejorando todavía más
+El if es una excelente herramiente ciertamente, pero tiene una gran desventaja, ¿que pasa cuando existen muchos casos?
+C nos brinda de otra excelente herramienta, el [Switch](https://www.arduino.cc/en/Reference/SwitchCase).
+
+    void loop() {
+        ...
+        
+        if(Serial.available() > 0) {
+            char dato = Serial.read(); 
+            Serial.print("Dato recibido: ");
+            Serial.println(dato);
+           
+            switch (dato) {
+                case 'A':
+                  Serial.println(1);
+                  break;
+                  
+                case 'B':
+                  Serial.println(2);
+                  break;
+                  
+                default:
+                  Serial.println(-1);
+                  break;
+            }
+        }
+        
         ...
     }
 
-Ahora tenemos un programa mucho más funcional, interesante y complejo! Podemos ver que las condiciones (IF's) nos proveen de mucha más flexibilidad y poder para controlar nuestro Arduino. Aunque el **if** no es la unica estructura que existe, te presento el [Switch](https://www.arduino.cc/en/Reference/SwitchCase).
-
 ## Ejercicio
-Ahora que sabes como controlar los colores del LED desde un Arduino el siguiente paso es:
-
-1. Controlar los colores verde y azul con las letras 'G' y 'B', respectivamente, de la misma manera que se controla el color rojo.
-2. Crea una sequencia de colores, donde el color cambie cada 1 segundo, con solo enviarle **una** instrucción desde la computadora.
-
-> Tip: utiliza el [Switch](https://www.arduino.cc/en/Reference/SwitchCase) para mayor facilidad.
+Haz un programa que reciba un dato de la computadora y dependiendo de su valor haga lo siguiente:
+* Si recibe un 1 -> Imprima el resultado de 12 + 74
+* Si recibe un 2 -> Imprima el resultado de 82 - 12
+* Si recibe un 3, 4, 5 -> Imprima el resultado de 13 x 5
+* Si recibe un 6, 7 -> Imprima el resultado de 36 / 7
+* Si recibe un 8 en adelante -> Imprima "La operación no es válida"
