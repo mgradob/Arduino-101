@@ -1,6 +1,7 @@
 ---
 layout: post
-title: 3 - Loopback y LEDs
+id: 3
+title: Loopback y LEDs
 date: 2016-01-19
 ---
 

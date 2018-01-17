@@ -1,6 +1,7 @@
 ---
 layout: post
-title: 2 - Hola Mundo
+id: 2
+title: Hola Mundo
 date: 2016-01-11
 ---
 
