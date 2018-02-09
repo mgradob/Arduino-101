@@ -20,6 +20,7 @@ Estos componentes electrónicos contienen muchos más componentes en su interior
 electrónica necesaria para controlar motores de corriente directa.
 
 Los circuitos integrados se ven de la siguiente manera:
+
 ![Alt text]({{ site.url }}/images/elec-prac-2-1.png)
 
 Todos los pines (patitas) estan enumerados, y para conocer cual es el primero debemos buscar la marca en un extremo 
@@ -27,9 +28,10 @@ Todos los pines (patitas) estan enumerados, y para conocer cual es el primero de
 abajo y luego al lado derecho empezando por abajo.
 
 Cada pin del circuito integrado tiene una función y en el caso del L293 éstas son las funciones que tienen:
- ![Alt text]({{ site.url }}/images/elec-prac-2-2.png)
 
-## Parte 1 - Circuito en serie.
+![Alt text]({{ site.url }}/images/elec-prac-2-2.png)
+
+## Circuito.
 Para el circuito los pasos son un poco diferentes a los de la práctica anterior: 
 
 1. Conecta el pin Vcc 1 (#16) a 5v. Este pin energiza todo nuestro circuito integrado.
@@ -43,6 +45,7 @@ podríamos aplicar mayor voltaje.
 8. Enciende la fuente de poder.
 
 Al finalizar debes tener un circuito como el siguiente:
+
 ![Alt text]({{ site.url }}/images/elec-prac-2-3.png)
 
 En este punto nuestro circuito está energizado, brindando de electricidad a nuestro motor, pero... no se mueve, ¿Por qué?
