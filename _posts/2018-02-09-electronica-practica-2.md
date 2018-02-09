@@ -61,10 +61,12 @@ Ahora el motor gira en el sentido opuesto.
 
 La explicación es simple:
 
-Para que nuestro motor gire debe existir una diferencia de voltaje, cuando tenemos conectados los pines Input 3 e Input 4
+Para que nuestro motor gire debe existir una diferencia de voltaje.
+
+Cuando tenemos conectados los pines Input 3 e Input 4
 a 5v el L293 está suministrando 5v en los pines de Output 3 y 4, respectivamente. 
 
-Cuando tenemos conectados los pines de Input 3 e Input 4 a GND el L293 está suministrando 50v en los pines de Output 3 y
+Cuando tenemos conectados los pines de Input 3 e Input 4 a GND el L293 está suministrando 0v en los pines de Output 3 y
 4, respectivamente.
 
 Para que giren los pines de Input deben estar conectados diferentes, uno a 5v y otro a GND.
