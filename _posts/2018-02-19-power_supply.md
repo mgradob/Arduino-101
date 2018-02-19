@@ -2,7 +2,7 @@
 layout: post
 session: 9
 title: Fuentes de Poder
-date: 2018-01-29
+date: 2018-02-19
 ---
 
 # Objetivo
@@ -32,6 +32,8 @@ Para reducir el ruido que se pudiera generar necesitamos agregar un par de capac
 El circuito se ve de la siguiente manera:
 
 ![Alt text]({{ site.url }}/images/circ-7805.png)
+
+![Alt text]({{ site.url }}/images/circ-7805-2.png)
 
 De esta manera nosotros podemos utilizar la misma fuente de poder (pila) para energizar nuestro circuito y darle poder a
 nuestros motores.
