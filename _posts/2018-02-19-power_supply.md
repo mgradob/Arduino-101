@@ -8,6 +8,13 @@ date: 2018-02-19
 # Objetivo
 En esta práctica vamos a aprender sobre las fuentes de poder. Al final conocerás como implementar una para tus proyectos.
 
+## Material
+* 1 Regulador lineal 7805
+* 1 Capacitor de 0.33 uF
+* 1 Capacitor de 0.1 uF
+* 1 Protoboard
+* Cable
+
 # Que es
 Las fuentes de poder son circuitos eleécticos que nos proveen una fuente de voltaje y corriente para otros circuitos. Hay
 muchas variaciones de fuentes, como AC-DC, DC-DC, lineales, conmutadas, y muchas más.
